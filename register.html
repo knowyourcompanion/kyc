@@ -286,7 +286,7 @@
 
                             <div class="col-md-12">
                                 <input class="form-control" id="instagram" type="text" name="instagram"
-                                    placeholder="Instagram Id (for contact info)" required>
+                                    placeholder="Paste Instagram link here (for contact info)" required>
                                 <!-- <a target="blank" href="https://www.instagram.com/">open instagram</a> -->
                                 <div class="valid-feedback">Password field is valid!</div>
                                 <div class="invalid-feedback">Password field cannot be blank!</div>
@@ -341,8 +341,6 @@
         // alert(longitude)
         if (name != '' && year != '' && branch != '' && shift != '' && instagram != '' && Gender != '' && latitude != '' && longitude != '') {
             location.href = 'http://knowyourcampanion.herokuapp.com/data/' + name + '/' + year + '/' + branch + '/' + shift + '/' + instagram + '/' + Gender + '/' + latitude + '/' + longitude;
-//             location.href = 'http://127.0.0.1:5000/data/' + name + '/' + year + '/' + branch + '/' + shift + '/' + instagram + '/' + Gender + '/' + latitude + '/' + longitude;
-
         }
         else{
 
