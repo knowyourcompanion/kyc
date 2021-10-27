@@ -211,10 +211,11 @@
                     <div class="form-items">
                         <h3>Register Today</h3>
                         <p>Fill in the data below.</p>
-                        <form class="requires-validation" action="/1234" method="POST">
+                        <form class="requires-validation">
 
                             <div class="col-md-12">
-                                <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+                                <input class="form-control" type="text" id='name' name="name" placeholder="Full Name"
+                                    required>
                                 <div class="valid-feedback">Username field is valid!</div>
                                 <div class="invalid-feedback">Username field cannot be blank!</div>
                             </div>
@@ -228,7 +229,7 @@
 
 
                             <div class="col-md-12">
-                                <select name="year" class="form-select mt-3" required>
+                                <select name="year" id="year" class="form-select mt-3" required>
                                     <option selected disabled value="">Year</option>
                                     <option value="1">1st year</option>
                                     <option value="2">2st year</option>
@@ -240,7 +241,7 @@
                                 <div class="invalid-feedback">Please select a position!</div>
                             </div>
                             <div class="col-md-12">
-                                <select name='branch' class="form-select mt-3" required>
+                                <select name='branch' id="branch" class="form-select mt-3" required>
                                     <option selected disabled value="">Branch</option>
                                     <option value="CS">Computer Science and Engineering</option>
                                     <option value="AI">Computer Science and Engineering (AI & ML)</option>
@@ -260,7 +261,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                <select name="shift" class="form-select mt-3" required>
+                                <select name="shift" id="shift" class="form-select mt-3" required>
                                     <option selected disabled value="">Shift</option>
                                     <option value="first">First Shift</option>
                                     <option value="second">Second SHift</option>
@@ -270,38 +271,32 @@
                                 <div class="invalid-feedback">Please select a position!</div>
                             </div>
 
+                            <div class="col-md-12">
+                                <select name='gender' id="gender" class="form-select mt-3" required>
+                                    <option selected disabled value="">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="secret">Secret</option>
+
+                                </select>
+                                <div class="valid-feedback">You selected a position!</div>
+                                <div class="invalid-feedback">Please select a position!</div>
+                            </div>
+
 
                             <div class="col-md-12">
-                                <input class="form-control" type="text" name="instagram" placeholder="Instagram Id"
-                                    required>
+                                <input class="form-control" id="instagram" type="text" name="instagram"
+                                    placeholder="Instagram Id (for contact info)" required>
                                 <!-- <a target="blank" href="https://www.instagram.com/">open instagram</a> -->
                                 <div class="valid-feedback">Password field is valid!</div>
                                 <div class="invalid-feedback">Password field cannot be blank!</div>
                             </div>
 
-                            <div class="col-md-12 mt-3">
-                                <label class="mb-3 mr-1" for="gender">Gender: </label>
-
-                                <input type="radio" class="btn-check" value='male' name="gender" id="male"
-                                    autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
-
-                                <input type="radio" class="btn-check" value='female' name="gender" id="female"
-                                    autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
-
-                                <input type="radio" class="btn-check" value="secret" name="gender" id="secret"
-                                    autocomplete="off" required>
-                                <label class="btn btn-sm btn-outline-secondary" for="secret">Secret</label>
-                                <div class="valid-feedback mv-up">You selected a gender!</div>
-                                <div class="invalid-feedback mv-up">Please select a gender!</div>
-                            </div>
 
 
 
 
-
-                            <div class="form-check" onclick="getlocation()">
+                            <div class="form-check" style="margin-top: 10px;" onclick="getlocation()">
                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                 <label class="form-check-label">I confirm that all data are correct</label>
                                 <div class="invalid-feedback">Please confirm that the entered data are all correct!
@@ -315,7 +310,8 @@
 
 
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                                <a id="submit" type="submit" onclick="submitrequest()"
+                                    class="btn btn-primary">Register</a>
                             </div>
                         </form>
                     </div>
@@ -331,20 +327,29 @@
 </body>
 
 </html>
+<script>
+    function submitrequest() {
+        name = document.getElementById('name').value;
+        year = document.getElementById('year').value;
+        branch = document.getElementById('branch').value;
+        shift = document.getElementById('shift').value;
+        instagram = document.getElementById('instagram').value;
+        Gender = document.getElementById('gender').value;
+        latitude = document.getElementById('locationx').value;
+        longitude = document.getElementById('locationy').value;
+        // alert(latitude)
+        // alert(longitude)
+        if (name != '' && year != '' && branch != '' && shift != '' && instagram != '' && Gender != '' && latitude != '' && longitude != '') {
+            location.href = 'http://knowyourcampanion.herokuapp.com/data/' + name + '/' + year + '/' + branch + '/' + shift + '/' + instagram + '/' + Gender + '/' + latitude + '/' + longitude;
+        }
+        else{
 
+            alert("Fill the form correctly")
+        }
 
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+</script>
 <script>
     var x = document.getElementById("location");
     function getlocation() {
@@ -381,51 +386,3 @@
         }
     }
 </script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Geolocation API</title>
-</head>
-<body>
-  <h1>Find your Current location</h1>
-<button onclick="getlocation()">Click me</button>
-<div id="location"></div>
-<script>
-	var x= document.getElementById("location");
-    function getlocation() {
-    	if(navigator.geolocation){
-    		navigator.geolocation.getCurrentPosition(showPosition, showError)
-    	  }
-    	else
-    	{
-             alert("Sorry! your browser is not supporting")
-         } }
-     
-     function showPosition(position){
-       var x = "Your current location is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " +    position.coords.longitude + ")";
-                document.getElementById("location").innerHTML = x;
-     }
-
-     function showError(error) {
-        switch(error.code){
-            case error.PERMISSION_DENIED:
-            alert("User denied the request for Geolocation API.");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("USer location information is unavailable.");
-            break;
-        case error.TIMEOUT:
-            alert("The request to get user location timed out.");
-            break;
-        case error.UNKNOWN_ERROR:
-            alert("An unknown error occurred.");
-            break;
-    }
-        }
-</script>
-</body>
-</html>
-
- 
