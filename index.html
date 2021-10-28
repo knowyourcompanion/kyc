@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Térkép</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <style>
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    .html,
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    html,
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .label {
+      color: #000;
+      background-color: white;
+      border: 1px solid #000;
+      font-family: "Lucida Grande", "Arial", sans-serif;
+      font-size: 12px;
+      text-align: center;
+      white-space: nowrap;
+      padding: 2px;
+    }
+
+    .label.green {
+      background-color: #58D400;
+    }
+
+    .label.red {
+      background-color: #D80027;
+      color: #fff;
+    }
+
+    .label.yellow {
+      background-color: #FCCA00;
+    }
+
+    .label.turquoise {
+      background-color: #00D9D2;
+    }
+
+    .label.brown {
+      background-color: #BF5300;
+      color: #fff;
+    }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3rthxrJtfGHmGJijI_fMrT96ecSc-AL8&v=3.exp"
+    type="text/javascript"></script>
+  <script src="http://cdn.sobekrepository.org/includes/gmaps-markerwithlabel/1.9.1/gmaps-markerwithlabel-1.9.1.js"
+    type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Qahiri&family=Rampart+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="pos-f-t">
+
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+
+        <h4 class="text-white">Connect with your Companion</h4>
+        <span class="text-muted">Enter Your Companion id to contect with them.</span>
+        <br>
+        <form action="">
+          <div class="form-group">
+            <br>
+            <input type="number" style="width: 300px;" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Enter ID">
+            <small id="emailHelp" class="form-text text-muted">We'll privately contact with you and Companion.</small>
+          </div>
+          <button onclick="idcheck()" class="btn btn-primary">Connect</button>
+
+
+        </form>
+        <script>
+          function idcheck() {
+            id = document.getElementById('exampleInputEmail1').value
+            // alert('{{data|length}}')
+            if (id != '' && id <= '{{data|length}}') {
+              window.location = "http://127.0.0.1:5000/" + id + '/' + 'id';
+            }
+          }
+        </script>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+      <h2 style="color: #fff; font-family: 'Rampart One';">Know Your Companion</h2>
+      <h2 style="color: #fff; font-family: 'Rampart One';">KYC</h2>
+    </nav>
+  </div>
+  <div>
+    <!-- <button>1234</button> -->
+  </div>
+  <div id="map">
+  </div>
+
+  {% endfor %}
+
+  <script src="static/main.js"></script>
+  <script>
+
+    function initMap() {
+      var bp = { lat: 21.14453684669095, lng: 79.0887220294186 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: bp
+      });
+
+
+      // data = ['qwerty', 21.126013539902498, 79.08623962941805, 'red', -10, 20]
+      const locations = [
+        ['qwerty', 21.126013539902498, 79.08623962941805, 'red', -10, 20],
+        ['id : 1<br>Name : Ayush s<br> Year : 3 <br> Branch : CS <br> Shift : first', 22.10526159260718, 79.10240450752715, 'red', -10, 20]
+      ];
+   
+
+      var icons = {
+        'green': {
+          url: 'https://goo.gl/qvLZ4R',
+          color: '#58D400'
+        },
+        'yellow': {
+          url: 'https://goo.gl/G6HyHS',
+          color: '#FCCA00'
+        },
+        'red': {
+          url: 'https://goo.gl/6hkqX1',
+          color: '#D80027'
+        },
+        'turquoise': {
+          url: 'https://goo.gl/uLRpYZ',
+          color: '#00D9D2'
+        },
+        'brown': {
+          url: 'https://goo.gl/XTosFM',
+          color: '#BF5300'
+        }
+      };
+      var image = 'https://goo.gl/dqvvFA';
+      for (var i = 0; i < locations.length; i++) {
+        var item = locations[i];
+        var marker = new MarkerWithLabel({
+          position: { lat: item[1], lng: item[2] },
+          map: map,
+          icon: icons[item[3]].url,
+          labelContent: item[0],
+          labelAnchor: new google.maps.Point(item[4], item[5]),
+          // the CSS class for the label
+          labelClass: "label " + item[3],
+          labelInBackground: true
+        });
+      }
+    }
+    initMap();
+  </script>
+
+</body>
+
+</html>
