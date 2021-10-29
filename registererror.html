@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>KYC - Know Your Companion - Register</title>
+
+</head>
+
+<body>
+    <div id="alertbox" class="alert alert-danger alert-dismissible fade show" role="alert" style=" position: absolute; z-index: 9999 !important; width: 39%;
+    top: 100px;    left: 49px;">
+		<strong>User Found!!</strong>User is already present in the database.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+        *,
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .html,
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        html,
+        body {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+            /* height: 100%; */
+            background-color: #ffffff;
+            /* background-color: #152733; */
+            /* overflow: hidden; */
+        }
+
+
+        .form-holder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .form-holder .form-content {
+            position: relative;
+            text-align: center;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 60px;
+        }
+
+        .form-content .form-items {
+            border: 3px solid #fff;
+            padding: 40px;
+            display: inline-block;
+            width: 100%;
+            min-width: 400px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            text-align: left;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        .form-content h3 {
+            color: #fff;
+            text-align: left;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-content h3.form-title {
+            margin-bottom: 30px;
+        }
+
+        .form-content p {
+            color: #fff;
+            text-align: left;
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 20px;
+            margin-bottom: 30px;
+        }
+
+
+        .form-content label,
+        .was-validated .form-check-input:invalid~.form-check-label,
+        .was-validated .form-check-input:valid~.form-check-label {
+            color: #fff;
+        }
+
+        .form-content input[type=text],
+        .form-content input[type=password],
+        .form-content input[type=email],
+        .form-content input[type=text],
+        .form-content select {
+            width: 100%;
+            padding: 9px 20px;
+            text-align: left;
+            border: 0;
+            outline: 0;
+            border-radius: 6px;
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            color: #8D8D8D;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+
+        .btn-primary {
+            background-color: #6C757D;
+            outline: none;
+            border: 0px;
+            box-shadow: none;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: #495056;
+            outline: none !important;
+            border: none !important;
+            box-shadow: none;
+        }
+
+        .form-content textarea {
+            position: static !important;
+            width: 100%;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-align: left;
+            background-color: #fff;
+            border: 0;
+            font-size: 15px;
+            font-weight: 300;
+            color: #8D8D8D;
+            outline: none;
+            resize: none;
+            height: 120px;
+            -webkit-transition: none;
+            transition: none;
+            margin-bottom: 14px;
+        }
+
+        .form-content textarea:hover,
+        .form-content textarea:focus {
+            border: 0;
+            background-color: #ebeff8;
+            color: #8D8D8D;
+        }
+
+        .mv-up {
+            margin-top: -9px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .invalid-feedback {
+            color: #ff606e;
+        }
+
+        .valid-feedback {
+            color: #2acc80;
+        }
+    </style>
+    <script>
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.requires-validation')
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+    </script>
+    <style>
+        @keyframes exampledown {
+
+            0% {
+                background-color: #152733ed;
+                margin-top: 100%;
+            }
+
+
+            100% {
+                background-color: #152733;
+                margin-top: 0%;
+
+            }
+        }
+
+
+        /* The element to apply the animation to */
+        .slidedown {
+            background-color: #152733;
+            animation-name: exampledown;
+            animation-duration: 10s;
+            position: relative;
+            animation-timing-function: linear;
+        }
+    </style>
+    <script>
+        setTimeout(function () {
+            document.getElementById('frontpage').style.display = 'none';
+
+        },6000);
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Qahiri&family=Rampart+One&display=swap" rel="stylesheet">
+    <div id="frontpage" style="text-align: center; margin-top: 150px; color: rgb(0, 0, 0);">
+        <h1 style="font-family: 'Rampart One' ;font-size: 3em; margin-top: 100px; text-align: center; ">Know your
+            Companion</h1>
+        <br>
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
+        <br>
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
+    </div>
+
+    <div style="background-color: #152733;  margin-top:0%;" class="slidedown form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register Today</h3>
+                        <p>Fill in the data below.</p>
+                        <form class="requires-validation">
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" id='name' name="name" placeholder="Full Name"
+                                    required>
+                                <div class="valid-feedback">Username field is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                            </div>
+
+                            <!-- <div class="col-md-12">
+                                <input class="form-control" type="email" name="email" placeholder="E-mail Address"
+                                    required>
+                                <div class="valid-feedback">Email field is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                            </div> -->
+
+
+                            <div class="col-md-12">
+                                <select name="year" id="year" class="form-select mt-3" required>
+                                    <option selected disabled value="">Year</option>
+                                    <option value="1">1st year</option>
+                                    <option value="2">2st year</option>
+                                    <option value="3">3st year</option>
+                                    <option value="4">4st year</option>
+
+                                </select>
+                                <div class="valid-feedback">You selected a position!</div>
+                                <div class="invalid-feedback">Please select a position!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <select name='branch' id="branch" class="form-select mt-3" required>
+                                    <option selected disabled value="">Branch</option>
+                                    <option value="CS">Computer Science and Engineering</option>
+                                    <option value="AI">Computer Science and Engineering (AI & ML)</option>
+                                    <option value="DS">Computer Science and Engineering (Data Sciences)</option>
+                                    <option value="Cyber">Computer Science and Engineering (Cyber Security)</option>
+                                    <option value="IT">Information Technology</option>
+                                    <option value="Electrical">Electrical Engineering</option>
+                                    <option value="ENTC">Electronics and Communications Engineering</option>
+                                    <option value="EN">Electronics Engineering</option>
+                                    <option value="Civil">Civil Engineering</option>
+                                    <option value="Mech.">Mechanical Engineering</option>
+                                    <option value="Ind.">Industrial Engineering</option>
+                                    <option value="Bio.">Biomedical Engineering</option>
+                                </select>
+                                <div class="valid-feedback">You selected a position!</div>
+                                <div class="invalid-feedback">Please select a position!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <select name="shift" id="shift" class="form-select mt-3" required>
+                                    <option selected disabled value="">Shift</option>
+                                    <option value="first">First Shift</option>
+                                    <option value="second">Second SHift</option>
+
+                                </select>
+                                <div class="valid-feedback">You selected a position!</div>
+                                <div class="invalid-feedback">Please select a position!</div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <select name='gender' id="gender" class="form-select mt-3" required>
+                                    <option selected disabled value="">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="secret">Secret</option>
+
+                                </select>
+                                <div class="valid-feedback">You selected a position!</div>
+                                <div class="invalid-feedback">Please select a position!</div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <input class="form-control" id="instagram" type="text" name="instagram"
+                                    placeholder="Enter your instagram username (for contact info)" required>
+                                <!-- <a target="blank" href="https://www.instagram.com/">open instagram</a> -->
+                                <div class="valid-feedback">Password field is valid!</div>
+                                <div class="invalid-feedback">Password field cannot be blank!</div>
+                            </div>
+
+
+
+
+
+                            <div class="form-check" style="margin-top: 10px;" onclick="getlocation()">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label">I confirm that all data are correct</label>
+                                <div class="invalid-feedback">Please confirm that the entered data are all correct!
+                                </div>
+                            </div>
+                            <!-- <div style="color: #ebeff8;" id="location"></div> -->
+                            <div hidden>
+                                <input id="locationx" name="Latitude">
+                                <input id="locationy" name="Longitude">
+                            </div>
+
+
+                            <div class="form-button mt-3">
+                                <a id="submit" type="submit" onclick="submitrequest()"
+                                    class="btn btn-primary">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+<script>
+    function submitrequest() {
+        name = document.getElementById('name').value;
+        year = document.getElementById('year').value;
+        branch = document.getElementById('branch').value;
+        shift = document.getElementById('shift').value;
+        instagram = document.getElementById('instagram').value;
+        Gender = document.getElementById('gender').value;
+        latitude = document.getElementById('locationx').value;
+        longitude = document.getElementById('locationy').value;
+        // alert(latitude)
+        // alert(longitude)
+        if (name != '' && year != '' && branch != '' && shift != '' && instagram != '' && Gender != '' && latitude != '' && longitude != '') {
+            location.href = 'http://knowyourcompanion.herokuapp.com/data/' + name + '/' + year + '/' + branch + '/' + shift + '/' + instagram + '/' + Gender + '/' + latitude + '/' + longitude;
+        }
+        else {
+
+            alert("Fill the form correctly")
+        }
+
+    }
+
+</script>
+<script>
+    var x = document.getElementById("location");
+    function getlocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError)
+        }
+        else {
+            alert("Sorry! your browser is not supporting")
+        }
+    }
+
+    function showPosition(position) {
+        var x = "Your current location is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+        // document.getElementById("location").innerHTML = x;
+
+        document.getElementById('locationx').value = position.coords.latitude;
+        document.getElementById('locationy').value = position.coords.longitude;
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation API.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("USer location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+</script>
