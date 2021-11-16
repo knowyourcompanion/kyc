@@ -378,7 +378,6 @@ Auther: Abdelrhman Said
         <div>
             <button class="btn btn-success" onclick="login()">Login</button>
             <button class="btn btn-danger" onclick="register()">Register</button>
-            <a href='https://www.javatpoint.com/html-geolocation' class='btn'>qwertyuiol</button>
         </div>
     </div>
     <script>
@@ -540,6 +539,7 @@ Auther: Abdelrhman Said
                     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                     crossorigin="anonymous"></script>
                 
+            </div>
         </div>
     </div>
     <div id="login" style="display: none; background-color: #152733;  margin-top:0%;" class="slidedown form-body">
@@ -667,6 +667,7 @@ Auther: Abdelrhman Said
 <script>
     var x = document.getElementById("location");
     function getlocation() {
+        alert('Allow locaton.')
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, showError)
         }
