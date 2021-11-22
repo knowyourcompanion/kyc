@@ -34,7 +34,7 @@
         </script>
 </head>
 
-<body style="            overflow: hidden;">
+<body style="            overflow-x: hidden;">
     <!-- <div id="alertbox" class="alert alert-danger alert-dismissible fade show" role="alert" style=" position: absolute; z-index: 9999 !important; width: 39%;
     top: 100px;    left: 49px;">
         <strong>User Found!!</strong>User is already present in the database.
@@ -201,7 +201,6 @@ Auther: Abdelrhman Said
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             text-align: center;
             min-height: 100vh;
         }
@@ -361,7 +360,7 @@ Auther: Abdelrhman Said
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Qahiri&family=Rampart+One&display=swap" rel="stylesheet">
-    <div id="frontpage" style="text-align: center; margin-top: 150px; color: rgb(0, 0, 0);">
+    <div id="frontpage" style="text-align: center; margin-top: 150px; margin-bottom: 150px; color: rgb(0, 0, 0);">
         <h1 style="font-family: 'Rampart One' ;font-size: 3em; margin-top: 100px; text-align: center; ">Know your
             Companion</h1>
         <br>
@@ -370,15 +369,26 @@ Auther: Abdelrhman Said
             Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
             itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
         <br>
-        <!-- <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
             adipisicing elit.
             Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
-            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div> -->
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
+        <div style="    margin: auto; width: 80%; text-align: center;">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit.
+            Perferendis in tempore numquam doloribus. Deleniti hic repellat laboriosam porro modi quaerat qui quia
+            itaque sunt, cumque voluptatem id suscipit molestiae pariatur!</div>
         <br>
         <div>
             <button class="btn btn-success" onclick="login()">Login</button>
             <button class="btn btn-danger" onclick="register()">Register</button>
-            <a href='https://ayushete2005.github.io/mobile-compiler/'>qwert</a>
         </div>
     </div>
     <script>
@@ -405,7 +415,7 @@ Auther: Abdelrhman Said
                         <form class="requires-validation">
 
                             <div class="col-md-12" style="padding:0%;">
-                                <input class="form-control" type="text" id='name' name="name" placeholder="Full Name"
+                                <input class="form-control" type="username" id='name' name="name" placeholder="Full Name"
                                     required>
                                 <div class="valid-feedback">Username field is valid!</div>
                                 <div class="invalid-feedback">Username field cannot be blank!</div>
@@ -463,7 +473,7 @@ Auther: Abdelrhman Said
                                 <div class="invalid-feedback">Please select a position!</div>
                             </div>
 
-                            <div class="col-md-12" style="padding:0%;">
+                            <div class="col-md-12 " style="padding:0%;">
                                 <select name='gender' id="gender" class="form-select mt-3" required>
                                     <option selected disabled value="">Gender</option>
                                     <option value="Male">Male</option>
@@ -477,7 +487,7 @@ Auther: Abdelrhman Said
 
 
                             <div class="col-md-12" style="padding:0%;">
-                                <input class="form-control" id="instagram" type="text" name="instagram"
+                                <input class="form-control  mt-3" id="instagram" type="name" name="instagram"
                                     placeholder="Enter your instagram username (for contact info)" required>
                                 <!-- <a target="blank" href="https://www.instagram.com/">open instagram</a> -->
                                 <div class="valid-feedback">Password field is valid!</div>
@@ -525,10 +535,10 @@ Auther: Abdelrhman Said
                             </div>
 
 
-                            <div class="form-button mt-3">
-                                <a id="submit" type="submit" onclick="submitrequest()"
+                            <div class="form-button mt-3"> 
+                                <a id="submit" type="submit" onclick="submitrequest()" style="margin-bottom: 9px;"
                                     class="btn btn-primary">Register</a><br>
-                                <a onclick="login()" style="cursor: pointer; color: white;">Already Registeres! Login
+                                <a onclick="login()" style=" cursor: pointer; color: white;">Already Registeres! Login
                                     now</a>
                             </div>
                         </form>
@@ -603,10 +613,10 @@ Auther: Abdelrhman Said
 
 
                             <div class="form-button mt-3">
-                                <a id="submit" type="submit" onclick="submitrequestlogin()"
+                                <a id="submit" type="submit" onclick="submitrequestlogin()" style="margin-bottom: 9px;"
                                     class="btn btn-primary">Login</a>
                                 <br>
-                                <a onclick="register()" style="cursor: pointer; color: white;">New!! Registeres now</a>
+                                <a onclick="register()" style="cursor: pointer; color: white;">New !! Register now</a>
 
                             </div>
                         </form>
